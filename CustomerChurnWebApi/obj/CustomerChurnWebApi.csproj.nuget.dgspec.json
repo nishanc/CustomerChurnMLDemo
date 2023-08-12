@@ -1,0 +1,102 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\CustomerChurnMLDemo\\CustomerChurnWebApi\\CustomerChurnWebApi.csproj": {}
+  },
+  "projects": {
+    "D:\\CustomerChurnMLDemo\\CustomerChurnWebApi\\CustomerChurnWebApi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\CustomerChurnMLDemo\\CustomerChurnWebApi\\CustomerChurnWebApi.csproj",
+        "projectName": "CustomerChurnWebApi",
+        "projectPath": "D:\\CustomerChurnMLDemo\\CustomerChurnWebApi\\CustomerChurnWebApi.csproj",
+        "packagesPath": "C:\\Users\\Nishan\\.nuget\\packages\\",
+        "outputPath": "D:\\CustomerChurnMLDemo\\CustomerChurnWebApi\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Nishan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Extensions.ML": {
+              "target": "Package",
+              "version": "[1.5.5, )"
+            },
+            "Microsoft.ML": {
+              "target": "Package",
+              "version": "[3.0.0-preview.23266.6, )"
+            },
+            "Microsoft.ML.FastTree": {
+              "target": "Package",
+              "version": "[3.0.0-preview.23266.6, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.1.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.21, 6.0.21]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[6.0.21, 6.0.21]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.21, 6.0.21]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.21, 6.0.21]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.110\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

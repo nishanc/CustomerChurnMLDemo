@@ -1,0 +1,522 @@
+﻿{
+  "Scenario": "Classification",
+  "DataSource": {
+    "Type": "TabularFile",
+    "Version": 1,
+    "FilePath": "D:\\CustomerChurnMLDemo\\CustomerChurnMLDemo\\Data\\customer_churn_dataset-training-master.csv",
+    "Delimiter": ",",
+    "DecimalMarker": ".",
+    "HasHeader": true,
+    "ColumnProperties": [
+      {
+        "ColumnName": "CustomerID",
+        "ColumnPurpose": "Ignore",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "Age",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "Gender",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "Tenure",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "Usage Frequency",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "Support Calls",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "Payment Delay",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "Subscription Type",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "Contract Length",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "Total Spend",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "Last Interaction",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "Churn",
+        "ColumnPurpose": "Label",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 4
+      }
+    ]
+  },
+  "Environment": {
+    "Type": "LocalCPU",
+    "Version": 1
+  },
+  "RunHistory": {
+    "Version": 3,
+    "Type": "Result",
+    "Trials": [
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "FastTreeOva",
+        "Score": 0.99959440530660215,
+        "RuntimeInSeconds": 9.615,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e3 * e4 * e10",
+          "e0": {
+            "OutputColumnNames": [
+              "Gender",
+              "Subscription Type",
+              "Contract Length"
+            ],
+            "InputColumnNames": [
+              "Gender",
+              "Subscription Type",
+              "Contract Length"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "Age",
+              "Tenure",
+              "Usage Frequency",
+              "Support Calls",
+              "Payment Delay",
+              "Total Spend",
+              "Last Interaction"
+            ],
+            "InputColumnNames": [
+              "Age",
+              "Tenure",
+              "Usage Frequency",
+              "Support Calls",
+              "Payment Delay",
+              "Total Spend",
+              "Last Interaction"
+            ]
+          },
+          "e10": {
+            "OutputColumnName": "PredictedLabel",
+            "InputColumnName": "PredictedLabel"
+          },
+          "e2": {
+            "InputColumnNames": [
+              "Gender",
+              "Subscription Type",
+              "Contract Length",
+              "Age",
+              "Tenure",
+              "Usage Frequency",
+              "Support Calls",
+              "Payment Delay",
+              "Total Spend",
+              "Last Interaction"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e3": {
+            "OutputColumnName": "Churn",
+            "InputColumnName": "Churn",
+            "AddKeyValueAnnotationsAsText": false
+          },
+          "e4": {
+            "NumberOfLeaves": 1977,
+            "MinimumExampleCountPerLeaf": 10,
+            "NumberOfTrees": 4,
+            "MaximumBinCountPerFeature": 115,
+            "FeatureFraction": 0.99999999,
+            "LearningRate": 6.5095274504324232E-05,
+            "LabelColumnName": "Churn",
+            "FeatureColumnName": "Features",
+            "DiskTranspose": false
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "FastTreeOva",
+        "Score": 0.99859472099227942,
+        "RuntimeInSeconds": 5.598,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e3 * e4 * e10",
+          "e0": {
+            "OutputColumnNames": [
+              "Gender",
+              "Subscription Type",
+              "Contract Length"
+            ],
+            "InputColumnNames": [
+              "Gender",
+              "Subscription Type",
+              "Contract Length"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "Age",
+              "Tenure",
+              "Usage Frequency",
+              "Support Calls",
+              "Payment Delay",
+              "Total Spend",
+              "Last Interaction"
+            ],
+            "InputColumnNames": [
+              "Age",
+              "Tenure",
+              "Usage Frequency",
+              "Support Calls",
+              "Payment Delay",
+              "Total Spend",
+              "Last Interaction"
+            ]
+          },
+          "e10": {
+            "OutputColumnName": "PredictedLabel",
+            "InputColumnName": "PredictedLabel"
+          },
+          "e2": {
+            "InputColumnNames": [
+              "Gender",
+              "Subscription Type",
+              "Contract Length",
+              "Age",
+              "Tenure",
+              "Usage Frequency",
+              "Support Calls",
+              "Payment Delay",
+              "Total Spend",
+              "Last Interaction"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e3": {
+            "OutputColumnName": "Churn",
+            "InputColumnName": "Churn",
+            "AddKeyValueAnnotationsAsText": false
+          },
+          "e4": {
+            "NumberOfLeaves": 99,
+            "MinimumExampleCountPerLeaf": 8,
+            "NumberOfTrees": 4,
+            "MaximumBinCountPerFeature": 60,
+            "FeatureFraction": 0.99881464154296107,
+            "LearningRate": 0.37370786527944716,
+            "LabelColumnName": "Churn",
+            "FeatureColumnName": "Features",
+            "DiskTranspose": false
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "FastForestOva",
+        "Score": 0.99722983900757955,
+        "RuntimeInSeconds": 10.176,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e3 * e5 * e10",
+          "e0": {
+            "OutputColumnNames": [
+              "Gender",
+              "Subscription Type",
+              "Contract Length"
+            ],
+            "InputColumnNames": [
+              "Gender",
+              "Subscription Type",
+              "Contract Length"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "Age",
+              "Tenure",
+              "Usage Frequency",
+              "Support Calls",
+              "Payment Delay",
+              "Total Spend",
+              "Last Interaction"
+            ],
+            "InputColumnNames": [
+              "Age",
+              "Tenure",
+              "Usage Frequency",
+              "Support Calls",
+              "Payment Delay",
+              "Total Spend",
+              "Last Interaction"
+            ]
+          },
+          "e10": {
+            "OutputColumnName": "PredictedLabel",
+            "InputColumnName": "PredictedLabel"
+          },
+          "e2": {
+            "InputColumnNames": [
+              "Gender",
+              "Subscription Type",
+              "Contract Length",
+              "Age",
+              "Tenure",
+              "Usage Frequency",
+              "Support Calls",
+              "Payment Delay",
+              "Total Spend",
+              "Last Interaction"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e3": {
+            "OutputColumnName": "Churn",
+            "InputColumnName": "Churn",
+            "AddKeyValueAnnotationsAsText": false
+          },
+          "e5": {
+            "NumberOfTrees": 13,
+            "NumberOfLeaves": 4,
+            "FeatureFraction": 0.964051664,
+            "LabelColumnName": "Churn",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "FastForestOva",
+        "Score": 0.99722663436317627,
+        "RuntimeInSeconds": 18.965,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e3 * e5 * e10",
+          "e0": {
+            "OutputColumnNames": [
+              "Gender",
+              "Subscription Type",
+              "Contract Length"
+            ],
+            "InputColumnNames": [
+              "Gender",
+              "Subscription Type",
+              "Contract Length"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "Age",
+              "Tenure",
+              "Usage Frequency",
+              "Support Calls",
+              "Payment Delay",
+              "Total Spend",
+              "Last Interaction"
+            ],
+            "InputColumnNames": [
+              "Age",
+              "Tenure",
+              "Usage Frequency",
+              "Support Calls",
+              "Payment Delay",
+              "Total Spend",
+              "Last Interaction"
+            ]
+          },
+          "e10": {
+            "OutputColumnName": "PredictedLabel",
+            "InputColumnName": "PredictedLabel"
+          },
+          "e2": {
+            "InputColumnNames": [
+              "Gender",
+              "Subscription Type",
+              "Contract Length",
+              "Age",
+              "Tenure",
+              "Usage Frequency",
+              "Support Calls",
+              "Payment Delay",
+              "Total Spend",
+              "Last Interaction"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e3": {
+            "OutputColumnName": "Churn",
+            "InputColumnName": "Churn",
+            "AddKeyValueAnnotationsAsText": false
+          },
+          "e5": {
+            "NumberOfTrees": 29,
+            "NumberOfLeaves": 4,
+            "FeatureFraction": 0.9201268,
+            "LabelColumnName": "Churn",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "FastForestOva",
+        "Score": 0.99715991592297271,
+        "RuntimeInSeconds": 9.586,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e3 * e5 * e10",
+          "e0": {
+            "OutputColumnNames": [
+              "Gender",
+              "Subscription Type",
+              "Contract Length"
+            ],
+            "InputColumnNames": [
+              "Gender",
+              "Subscription Type",
+              "Contract Length"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "Age",
+              "Tenure",
+              "Usage Frequency",
+              "Support Calls",
+              "Payment Delay",
+              "Total Spend",
+              "Last Interaction"
+            ],
+            "InputColumnNames": [
+              "Age",
+              "Tenure",
+              "Usage Frequency",
+              "Support Calls",
+              "Payment Delay",
+              "Total Spend",
+              "Last Interaction"
+            ]
+          },
+          "e10": {
+            "OutputColumnName": "PredictedLabel",
+            "InputColumnName": "PredictedLabel"
+          },
+          "e2": {
+            "InputColumnNames": [
+              "Gender",
+              "Subscription Type",
+              "Contract Length",
+              "Age",
+              "Tenure",
+              "Usage Frequency",
+              "Support Calls",
+              "Payment Delay",
+              "Total Spend",
+              "Last Interaction"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e3": {
+            "OutputColumnName": "Churn",
+            "InputColumnName": "Churn",
+            "AddKeyValueAnnotationsAsText": false
+          },
+          "e5": {
+            "NumberOfTrees": 6,
+            "NumberOfLeaves": 4,
+            "FeatureFraction": 0.9633432,
+            "LabelColumnName": "Churn",
+            "FeatureColumnName": "Features"
+          }
+        }
+      }
+    ],
+    "Estimators": {
+      "e0": "OneHotEncoding",
+      "e1": "ReplaceMissingValues",
+      "e2": "Concatenate",
+      "e3": "MapValueToKey",
+      "e4": "FastTreeOva",
+      "e5": "FastForestOva",
+      "e6": "LbfgsLogisticRegressionOva",
+      "e7": "LbfgsMaximumEntropyMulti",
+      "e8": "SdcaMaximumEntropyMulti",
+      "e9": "SdcaLogisticRegressionOva",
+      "e10": "MapKeyToValue"
+    },
+    "Schema": "e0 * e1 * e2 * e3 * (e4 + e5 + e6 + e7 + e8 + e9) * e10",
+    "MetricName": "MacroAccuracy",
+    "ModelFilePath": "D:\\CustomerChurnMLDemo\\CustomerChurnMLDemo\\CustomerChurn.mlnet"
+  },
+  "Type": "TrainingConfig",
+  "Version": 4,
+  "TrainingOption": {
+    "Version": 2,
+    "Subsampling": false,
+    "Type": "ClassificationTrainingOption",
+    "TrainingTime": 600,
+    "LabelColumn": "Churn",
+    "ValidationOption": {
+      "Version": 0,
+      "Type": "TrainValidateSplitValidationOption",
+      "SplitRatio": 0.2
+    }
+  }
+}
