@@ -1,28 +1,69 @@
-﻿// Import the necessary ML.NET namespace
-using CustomerChurnMLDemo;
+﻿using CustomerChurnMLDemo;
 using Microsoft.ML;
+using Microsoft.ML.Data;
+using Microsoft.ML.AutoML;
 
-// Create an MLContext instance, which serves as the entry point to ML.NET functionality
-var mlContext = new MLContext();
-
-// Load the data from a file using the CustomerChurn class's LoadIDataViewFromFile method
-// It loads the data for retraining a machine learning model for customer churn prediction
-var data = CustomerChurn.LoadIDataViewFromFile(mlContext, CustomerChurn.RetrainFilePath, CustomerChurn.RetrainSeparatorChar, CustomerChurn.RetrainHasHeader);
-
-// Get the full path to the model file "CustomerChurn.mlnet"
-string modelPath = Path.GetFullPath("CustomerChurn.mlnet");
-
-// Load a pre-trained ML.NET model from the modelPath and get the ITransformer
-// The model is loaded for further usage, like prediction or feature importance calculation
-ITransformer model = mlContext.Model.Load(modelPath, out var _);
-
-// Calculate Permutation Feature Importance (PFI) using the CustomerChurn class's CalculatePFI method
-// PFI assesses the impact of each feature on the prediction results of the model
-var pfi = CustomerChurn.CalculatePFI(mlContext, data, model, "Churn");
-
-// Iterate through each tuple (feature, importance score) in the PFI results
-foreach (var tuple in pfi)
+class Program
 {
-    // Print the feature name and its importance score
-    Console.WriteLine($"{tuple.Item1} - {tuple.Item2}");
+    static void Main(string[] args)
+    {
+        string trainDataFilePath = @"D:\CustomerChurnMLDemo\CustomerChurnMLDemo\Data\customer_churn_dataset-training-master.csv";
+        string testDataFilePath = @"D:\CustomerChurnMLDemo\CustomerChurnMLDemo\Data\customer_churn_dataset-testing-master.csv";
+
+        // Initialize a new MLContext
+        var context = new MLContext();
+
+        // Load your dataset
+        IDataView dataView = context.Data.LoadFromTextFile<CustomerChurn.ModelInput>(trainDataFilePath, separatorChar: ',', hasHeader: true);
+
+        // Load your evaluation/test data
+        IDataView testDataView = context.Data.LoadFromTextFile<CustomerChurn.ModelInput>(testDataFilePath, separatorChar: ',', hasHeader: true);
+
+        // Define the AutoML experiment settings
+        MulticlassExperimentSettings settings = new MulticlassExperimentSettings()
+        {
+            OptimizingMetric = MulticlassClassificationMetric.MacroAccuracy,
+            MaxExperimentTimeInSeconds = 600,
+            CacheDirectoryName = null, // Skip the disk and store in-memory
+        };
+
+        // Run AutoML experiment
+        var experiment = context.Auto().CreateMulticlassClassificationExperiment(settings);
+        var result = experiment.Execute(dataView, validationData: testDataView, labelColumnName: "Churn",progressHandler: new MulticlassProgressReporter());
+
+        // Get the best model
+        var bestModel = result.BestRun.Model;
+
+        // Make predictions using the best model
+        var predictions = bestModel.Transform(testDataView);
+
+        // Evaluate model's performance
+        var metrics = context.MulticlassClassification.Evaluate(predictions, "Churn");
+
+        // Print confusion matrix
+        Console.WriteLine($"Confusion Matrix:\n{metrics.ConfusionMatrix.GetFormattedConfusionTable()}");
+
+        // Print other performance metrics
+        Console.WriteLine($"Accuracy: {metrics.MacroAccuracy}");
+        Console.WriteLine($"MicroAccuracy: {metrics.MicroAccuracy}");
+        Console.WriteLine($"LogLoss: {metrics.LogLoss}");
+    }
+}
+
+public class MulticlassProgressReporter : IProgress<RunDetail<MulticlassClassificationMetrics>>
+{
+    public void Report(RunDetail<MulticlassClassificationMetrics> value)
+    {
+        // Metrics may be null if an exception occurred or this run was canceled due to time constraints
+        if (value.ValidationMetrics != null)
+        {
+            double accuracy = value.ValidationMetrics.MacroAccuracy;
+
+            Console.WriteLine($"{value.TrainerName} ran in {value.RuntimeInSeconds:0.00} seconds with accuracy of {accuracy:p}");
+        }
+        else
+        {
+            Console.WriteLine($"{value.TrainerName} ran in {value.RuntimeInSeconds:0.00} seconds but did not complete. Time likely expired.");
+        }
+    }
 }
