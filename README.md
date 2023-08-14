@@ -1,6 +1,6 @@
 # ML.NET AutoML Demo
 
-[![Header Image](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7uMsUQXWEl6O-QFivsiQxdaUWVPj4kgzCh8PjM8zQD2c8De36GL1Bx9H2xfhzDtsqEzN_wIgQePEpBCMS8p6M59HaH6LHz10dcIkyDdhvVFPrhLeMzb1e9Xpe6Tf-M3m6r5kPySR9tu_nohyaK-atH08Jne13h80fPf3MnV_iBCHIQbHjO3EEfjCWIkvI/w640-h300/37_Header.jpg)]([https://blog.nishanc.com/2023/08/signalr-notifications-in-dotnet7-and-angular.html](https://blog.nishanc.com/2023/08/mlnet-automl-model-builder-step-by-step.html)https://blog.nishanc.com/2023/08/mlnet-automl-model-builder-step-by-step.html)
+[![Header Image](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7uMsUQXWEl6O-QFivsiQxdaUWVPj4kgzCh8PjM8zQD2c8De36GL1Bx9H2xfhzDtsqEzN_wIgQePEpBCMS8p6M59HaH6LHz10dcIkyDdhvVFPrhLeMzb1e9Xpe6Tf-M3m6r5kPySR9tu_nohyaK-atH08Jne13h80fPf3MnV_iBCHIQbHjO3EEfjCWIkvI/w640-h300/37_Header.jpg)](https://blog.nishanc.com/2023/08/mlnet-automl-model-builder-step-by-step.html)
 
 The AutoML Model Builder wizard in Visual Studio is a tool provided by Microsoft that facilitates the process of building, training, and deploying machine learning models directly within the Visual Studio integrated development environment (IDE). This wizard simplifies the machine learning workflow, allowing developers and data scientists to create powerful models without needing to be experts in machine learning.
 
